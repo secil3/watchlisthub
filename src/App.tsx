@@ -1,10 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
+import { RequireAuth } from './Components/Auth/RequireAuth'
 import { Navbar } from './Components/Layout/Navbar'
 import { HomePage } from './Pages/HomePage'
 import { LibraryPage } from './Pages/LibraryPage'
 import { MediaDetailPage } from './Pages/MediaDetailPage'
 import { NewMediaPage } from './Pages/NewMediaPage'
 import { NotFoundPage } from './Pages/NotFoundPage'
+import { SignInPage } from './Pages/SignInPage'
+import { SignUpPage } from './Pages/SignUpPage'
 import { MediaProvider } from './storage/MediaContext'
 import { useMediaStore } from './storage/useMediaStore'
 
@@ -21,9 +24,18 @@ function App() {
         ) : null}
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/library" element={<LibraryPage />} />
           <Route path="/library/:id" element={<MediaDetailPage />} />
-          <Route path="/new" element={<NewMediaPage />} />
+          <Route
+            path="/new"
+            element={
+              <RequireAuth>
+                <NewMediaPage />
+              </RequireAuth>
+            }
+          />
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

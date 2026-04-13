@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../storage/AuthContext'
 import { useMedia } from '../storage/MediaContext'
 
 function Stat({ label, value }: { label: string; value: number }) {
@@ -12,6 +13,7 @@ function Stat({ label, value }: { label: string; value: number }) {
 }
 
 export function HomePage() {
+  const { isAuthenticated } = useAuth()
   const { items, stats, seedFromApi, isSeeding, seedError, exportAsJson, importFromJson } = useMedia()
   const featured = items.slice(0, 6)
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -31,6 +33,28 @@ export function HomePage() {
               Track movies & series, add reviews, and keep everything saved in your browser.
             </p>
 
+            {!isAuthenticated ? (
+              <div className="mt-4 rounded-2xl border border-fuchsia-500/35 bg-fuchsia-500/10 px-4 py-3">
+                <p className="text-sm text-fuchsia-100">
+                  Add, update and delete actions require an account.
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <Link
+                    to="/signin"
+                    className="rounded-xl bg-fuchsia-500 px-3 py-1.5 text-xs font-semibold text-white hover:bg-fuchsia-400"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="rounded-xl border border-fuchsia-400/40 bg-transparent px-3 py-1.5 text-xs font-semibold text-fuchsia-100 hover:bg-fuchsia-500/20"
+                  >
+                    Create account
+                  </Link>
+                </div>
+              </div>
+            ) : null}
+
             <div className="mt-5 flex flex-wrap gap-2">
               <Link
                 to="/library"
@@ -39,7 +63,7 @@ export function HomePage() {
                 Browse library
               </Link>
               <Link
-                to="/new"
+                to={isAuthenticated ? '/new' : '/signin'}
                 className="rounded-xl bg-fuchsia-500 px-4 py-2 text-sm font-semibold text-white hover:bg-fuchsia-400"
               >
                 Add new

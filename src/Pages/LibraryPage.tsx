@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MediaCard } from '../Components/Media/MediaCard'
+import { useAuth } from '../storage/AuthContext'
 import { useMedia } from '../storage/MediaContext'
 
 export function LibraryPage() {
+  const { isAuthenticated } = useAuth()
   const { items, updateItem, deleteItem } = useMedia()
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<'all' | 'movie' | 'series'>('all')
@@ -58,12 +60,21 @@ export function LibraryPage() {
             Search, filter, and manage your items.
           </p>
         </div>
-        <Link
-          to="/new"
-          className="inline-flex items-center justify-center rounded-xl bg-fuchsia-500 px-4 py-2 text-sm font-semibold text-white hover:bg-fuchsia-400"
-        >
-          Add new
-        </Link>
+        {isAuthenticated ? (
+          <Link
+            to="/new"
+            className="inline-flex items-center justify-center rounded-xl bg-fuchsia-500 px-4 py-2 text-sm font-semibold text-white hover:bg-fuchsia-400"
+          >
+            Add new
+          </Link>
+        ) : (
+          <Link
+            to="/signin"
+            className="inline-flex items-center justify-center rounded-xl border border-fuchsia-500/30 bg-fuchsia-500/10 px-4 py-2 text-sm font-semibold text-fuchsia-100 hover:bg-fuchsia-500/20"
+          >
+            Sign in to add
+          </Link>
+        )}
       </div>
 
       <div className="mt-5 grid gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 sm:grid-cols-6">
@@ -149,8 +160,15 @@ export function LibraryPage() {
             <MediaCard
               key={item.id}
               item={item}
-              onToggleWatched={() => updateItem(item.id, { isWatched: !item.isWatched })}
-              onDelete={() => deleteItem(item.id)}
+              onToggleWatched={() => {
+                if (!isAuthenticated) return
+                updateItem(item.id, { isWatched: !item.isWatched })
+              }}
+              onDelete={() => {
+                if (!isAuthenticated) return
+                deleteItem(item.id)
+              }}
+              canManage={isAuthenticated}
             />
           ))}
         </div>

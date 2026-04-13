@@ -1,11 +1,13 @@
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { MediaForm } from '../Components/Media/MediaForm'
 import { ReviewForm } from '../Components/Media/ReviewForm'
+import { useAuth } from '../storage/AuthContext'
 import { useMedia } from '../storage/MediaContext'
 
 export function MediaDetailPage() {
   const { id } = useParams()
   const nav = useNavigate()
+  const { isAuthenticated } = useAuth()
   const { items, updateItem, deleteItem, addReview } = useMedia()
 
   const item = items.find((x) => x.id === id)
@@ -46,29 +48,44 @@ export function MediaDetailPage() {
             </p>
           </div>
         </div>
-        <button
-          onClick={() => {
-            deleteItem(item.id)
-            nav('/library')
-          }}
-          className="rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-2 text-sm font-semibold text-rose-100 hover:bg-rose-500/15"
-        >
-          Delete
-        </button>
+        {isAuthenticated ? (
+          <button
+            onClick={() => {
+              deleteItem(item.id)
+              nav('/library')
+            }}
+            className="rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-2 text-sm font-semibold text-rose-100 hover:bg-rose-500/15"
+          >
+            Delete
+          </button>
+        ) : (
+          <Link
+            to="/signin"
+            className="rounded-xl border border-fuchsia-500/30 bg-fuchsia-500/10 px-4 py-2 text-sm font-semibold text-fuchsia-100 hover:bg-fuchsia-500/20"
+          >
+            Sign in to edit
+          </Link>
+        )}
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <section className="rounded-2xl border border-white/10 bg-white/5 p-5">
           <h2 className="text-sm font-semibold text-white">Edit</h2>
           <div className="mt-4">
-            <MediaForm
-              initial={item}
-              submitLabel="Update"
-              onSubmit={(value) => {
-                updateItem(item.id, value)
-                nav('/library')
-              }}
-            />
+            {isAuthenticated ? (
+              <MediaForm
+                initial={item}
+                submitLabel="Update"
+                onSubmit={(value) => {
+                  updateItem(item.id, value)
+                  nav('/library')
+                }}
+              />
+            ) : (
+              <p className="text-sm text-slate-300">
+                You need to sign in to update this item.
+              </p>
+            )}
           </div>
         </section>
 
@@ -78,7 +95,11 @@ export function MediaDetailPage() {
             <p className="mt-1 text-xs text-slate-300">Average user review: {reviewAverage}/5</p>
           ) : null}
           <div className="mt-4">
-            <ReviewForm onSubmit={(v) => addReview(item.id, v)} />
+            {isAuthenticated ? (
+              <ReviewForm onSubmit={(v) => addReview(item.id, v)} />
+            ) : (
+              <p className="text-sm text-slate-300">Sign in to leave a review.</p>
+            )}
           </div>
 
           <div className="mt-5 space-y-3">

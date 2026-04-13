@@ -6,10 +6,12 @@ export function MediaCard({
   item,
   onToggleWatched,
   onDelete,
+  canManage,
 }: {
   item: MediaItem
   onToggleWatched: () => void
   onDelete: () => void
+  canManage: boolean
 }) {
   const poster = item.posterUrl || 'https://placehold.co/320x480/png?text=Poster'
   const stars = `${'★'.repeat(item.rating)}${'☆'.repeat(5 - item.rating)}`
@@ -54,18 +56,29 @@ export function MediaCard({
           >
             Details
           </Link>
-          <button
-            onClick={onToggleWatched}
-            className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-100 hover:bg-white/10"
-          >
-            {item.isWatched ? 'Mark unwatched' : 'Mark watched'}
-          </button>
-          <button
-            onClick={onDelete}
-            className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs font-medium text-rose-100 hover:bg-rose-500/15"
-          >
-            Delete
-          </button>
+          {canManage ? (
+            <>
+              <button
+                onClick={onToggleWatched}
+                className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-100 hover:bg-white/10"
+              >
+                {item.isWatched ? 'Mark unwatched' : 'Mark watched'}
+              </button>
+              <button
+                onClick={onDelete}
+                className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs font-medium text-rose-100 hover:bg-rose-500/15"
+              >
+                Delete
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/signin"
+              className="rounded-lg border border-fuchsia-500/30 bg-fuchsia-500/15 px-3 py-1.5 text-xs font-medium text-fuchsia-100 hover:bg-fuchsia-500/25"
+            >
+              Sign in to manage
+            </Link>
+          )}
         </div>
       </div>
     </div>
