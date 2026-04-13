@@ -2,6 +2,10 @@
 
 Film/Dizi izleme listesi ve yorumlama uygulaması.
 
+## Live Demo
+
+[https://enchanting-rolypoly-511bb1.netlify.app](https://enchanting-rolypoly-511bb1.netlify.app)
+
 ## Özellikler
 
 - **Listeleme**: Kütüphane ekranında filtreleme + arama
