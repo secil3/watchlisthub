@@ -44,21 +44,21 @@ npm run preview
 ## Ekran Goruntuleri
 
 ### Dashboard
-![Dashboard](<img width="1552" height="916" alt="Screenshot 2026-04-15 at 09 59 44" src="https://github.com/user-attachments/assets/674c1d27-201d-485c-af74-4c720db409b1" />)
+<img width="1552" height="916" alt="Screenshot 2026-04-15 at 09 59 44" src="https://github.com/user-attachments/assets/674c1d27-201d-485c-af74-4c720db409b1" />
 
 ---
 
 ### Library
-![Library](<img width="1552" height="916" alt="Screenshot 2026-04-15 at 10 02 10" src="https://github.com/user-attachments/assets/62f6d6c0-0e11-40e0-a94d-42228500000f" />)
+<img width="1552" height="916" alt="Screenshot 2026-04-15 at 10 02 10" src="https://github.com/user-attachments/assets/62f6d6c0-0e11-40e0-a94d-42228500000f" />
 
 ---
 
 ### Add New
-![Add New](<img width="1138" height="918" alt="Screenshot 2026-04-15 at 09 44 36" src="https://github.com/user-attachments/assets/c26ef043-8b3c-43de-b7b0-445dd1604e9c" />)
+<img width="1138" height="918" alt="Screenshot 2026-04-15 at 09 44 36" src="https://github.com/user-attachments/assets/c26ef043-8b3c-43de-b7b0-445dd1604e9c" />
 
 ---
 
 ### Edit & Review
-![Edit](<img width="1138" height="918" alt="Screenshot 2026-04-15 at 09 44 47" src="https://github.com/user-attachments/assets/531f589a-ae53-4049-9ead-3d4294fec875" />)
+<img width="1138" height="918" alt="Screenshot 2026-04-15 at 09 44 47" src="https://github.com/user-attachments/assets/531f589a-ae53-4049-9ead-3d4294fec875" />
 
 ---
