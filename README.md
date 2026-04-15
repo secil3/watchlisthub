@@ -1,6 +1,6 @@
 # WatchlistHub (React + TypeScript + Axios + Vite)
 
-Film/Dizi izleme listesi ve yorumlama uygulaması.
+Modern bir film & dizi takip uygulaması. Kullanıcılar içerik ekleyebilir, düzenleyebilir, silebilir ve değerlendirme yapabilir.
 
 ## Live Demo
 
@@ -29,19 +29,35 @@ npm run dev
 npm run build
 npm run preview
 ```
+##  Kullanılan Teknolojiler
 
-## Netlify Deploy
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Axios
+- LocalStorage
 
-- **Build command**: `npm run build`
-- **Publish directory**: `dist`
+---
 
-> SPA routing için Netlify’da `public/_redirects` dosyası ekleyebilirsin:
->
-> `/* /index.html 200`
 
 ## Ekran Goruntuleri
+### 🏠 Dashboard
+![Dashboard](https://github.com/user-attachments/assets/26021c1e-9033-4402-a225-89ac6ae6f6ff)
 
-![Dashboard](./public/screenshots/dashboard.png)
-![Library](./public/screenshots/library.png)
-![Detail](./public/screenshots/detail.png)
-![Add New](./public/screenshots/add-new.png)
+---
+
+### 📚 Library
+![Library](https://github.com/user-attachments/assets/5b766f68-a763-4b8f-bc62-1cbd85859b49)
+
+---
+
+### ➕ Add New
+![Add](https://github.com/user-attachments/assets/476de355-4dec-49c9-8cc8-16f3e11cd1c4)
+
+---
+
+### ✏️ Edit & Review
+![Edit](https://github.com/user-attachments/assets/749d0b84-7f64-43c4-aad0-6a434fabb137)
+
+---
