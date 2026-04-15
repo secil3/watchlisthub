@@ -42,22 +42,21 @@ npm run preview
 
 
 ## Ekran Goruntuleri
-### 🏠 Dashboard
+
+### Dashboard
 ![Dashboard](https://github.com/user-attachments/assets/26021c1e-9033-4402-a225-89ac6ae6f6ff)
 
 ---
 
-### 📚 Library
+### Library
 ![Library](https://github.com/user-attachments/assets/5b766f68-a763-4b8f-bc62-1cbd85859b49)
 
 ---
 
-### ➕ Add New
-![Add](https://github.com/user-attachments/assets/476de355-4dec-49c9-8cc8-16f3e11cd1c4)
+### Add New
+![Add New](https://github.com/user-attachments/assets/476de355-4dec-49c9-8cc8-16f3e11cd1c4)
 
 ---
 
-### ✏️ Edit & Review
+### Edit & Review
 ![Edit](https://github.com/user-attachments/assets/749d0b84-7f64-43c4-aad0-6a434fabb137)
-
----
